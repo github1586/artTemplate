@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../dist/template.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script id="test" type=text/html>
+         <h1>{{title}}</h1>
+         {{include 'content'}}
+    </script>
+    <script>
+       
+         var content = ` <ul>
+                {{each list as value i}}
+                <li>索引{{i + 1}} :{{value}}</li>
+                {{/each}}
+            </ul>`;
+        var render = template.compile(content);
+        var html = render({
+            list:['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+        });
+        document.getElementById('container').innerHTML = html;
+    </script>
+</body>
+</html>
